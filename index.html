@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Saurabh!</title>
+  <title>Wish Saurabh a Happy Birthday!</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe0e9, #e0f7fa);
       text-align: center;
       padding: 50px;
     }
@@ -14,52 +14,55 @@
       font-size: 3rem;
       color: #333;
     }
-    p {
-      font-size: 1.5rem;
-    }
-    .counter {
-      font-size: 4rem;
-      color: #e91e63;
-      margin: 20px 0;
+    input, textarea {
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
     button {
-      background-color: #e91e63;
-      color: white;
-      font-size: 1.2rem;
       padding: 10px 20px;
+      font-size: 1.1rem;
+      background-color: #ff4081;
+      color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #c2185b;
+      background-color: #f50057;
+    }
+    #counter {
+      font-size: 2.5rem;
+      color: #e91e63;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>🎉 Happy Birthday Saurabh! 🎂</h1>
-  <p>Kitne log wish kar chuke hain?</p>
-  <div class="counter" id="wishCount">0</div>
-  <button onclick="addWish()">Wish Now</button>
+  <h1>🎂 Happy Birthday Saurabh!</h1>
+  <p>Send your wish below 👇</p>
+
+  <form action="https://formsubmit.co/rs4114236@gmail.com" method="POST" onsubmit="incrementCount()">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <textarea name="message" placeholder="Your Message" rows="4" required></textarea><br>
+    <input type="hidden" name="_captcha" value="false">
+    <button type="submit">🎉 Send Wish</button>
+  </form>
+
+  <div id="counter">Total Wishes: <span id="wishCount">0</span></div>
 
   <script>
-    function getWishes() {
-      return parseInt(localStorage.getItem("wishCount") || "0");
-    }
+    let count = localStorage.getItem('wish-count') || 0;
+    document.getElementById('wishCount').textContent = count;
 
-    function setWishes(count) {
-      localStorage.setItem("wishCount", count);
-      document.getElementById("wishCount").textContent = count;
-    }
-
-    function addWish() {
-      let count = getWishes();
+    function incrementCount() {
       count++;
-      setWishes(count);
+      localStorage.setItem('wish-count', count);
+      document.getElementById('wishCount').textContent = count;
     }
-
-    // On page load
-    setWishes(getWishes());
   </script>
 </body>
 </html>
