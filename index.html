@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Saurabh!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #333;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    .counter {
+      font-size: 4rem;
+      color: #e91e63;
+      margin: 20px 0;
+    }
+    button {
+      background-color: #e91e63;
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday Saurabh! 🎂</h1>
+  <p>Kitne log wish kar chuke hain?</p>
+  <div class="counter" id="wishCount">0</div>
+  <button onclick="addWish()">Wish Now</button>
+
+  <script>
+    function getWishes() {
+      return parseInt(localStorage.getItem("wishCount") || "0");
+    }
+
+    function setWishes(count) {
+      localStorage.setItem("wishCount", count);
+      document.getElementById("wishCount").textContent = count;
+    }
+
+    function addWish() {
+      let count = getWishes();
+      count++;
+      setWishes(count);
+    }
+
+    // On page load
+    setWishes(getWishes());
+  </script>
+</body>
+</html>
